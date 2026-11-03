@@ -75,7 +75,8 @@ def load():
     for w in works:
         by_cat[w["category"]].append(w)
     for c in by_cat:
-        by_cat[c].sort(key=lambda w: w["order"])
+        # works still to be edited (status: draft) go to the end of their category
+        by_cat[c].sort(key=lambda w: (w.get("status") == "draft", w["order"]))
     return by_cat
 
 

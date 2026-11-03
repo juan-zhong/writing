@@ -5,7 +5,7 @@ title_zh: 與錢玄同先生論古史書
 title_en: Discussing ancient history with Mr. Qian Xuantong
 original: zh
 direction: zh-en
-order: 3
+order: 0
 kind: pdf
 author_zh: 顾颉刚
 author_en: Gu Jiegang
