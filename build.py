@@ -166,20 +166,14 @@ def render_body(w):
 
 
 def render_lyrics(w):
-    """Pasted translation: each stanza alternates a Chinese line and its English line."""
+    """Pasted English translation, set like a poem (stanzas separated by blank lines)."""
     parts = []
     for kind, lines in blocks(w["body"]):
         if kind == "gap":
             parts.append('<div class="gap" aria-hidden="true"></div>')
             continue
-        spans = []
-        for i, l in enumerate(lines):
-            if i % 2 == 0:
-                spans.append(f'<span class="ln src" lang="zh-CN">{esc(l)}</span>')
-            else:
-                spans.append(f'<span class="ln tgt" lang="en">{esc(l)}</span>')
-        parts.append('<p class="st">' + "".join(spans) + "</p>")
-    return '<div class="text lyrics">\n' + "\n".join(parts) + "\n</div>"
+        parts.append('<p class="st">' + "".join(f'<span class="ln">{esc(l)}</span>' for l in lines) + "</p>")
+    return '<div class="text verse en-body lyrics" lang="en">\n' + "\n".join(parts) + "\n</div>"
 
 
 # ---------- page shell ----------
@@ -215,17 +209,16 @@ def page(path, lang, title, body, body_class, zh_body=False, remember=None, extr
         f.write(doc)
 
 
-def tabs(lang, other_href):
+def tabs(lang, other_href=None):
+    # other_href is no longer shown: the 中 / EN switch lives only on the two contents pages
     if lang == "zh":
         return f"""<nav class="tabs" aria-label="导航">
 <a class="zh" href="{{R}}index.html">{kai("书写选集")}</a>
 <a class="zh" href="{{R}}zh/index.html">{kai("目录")}</a>
-<a class="en tab-en" href="{other_href}" lang="en">EN</a>
 </nav>"""
     return f"""<nav class="tabs" aria-label="Navigation">
 <a class="en tab-en" href="{{R}}index.html">A COLLECTION OF WRITINGS</a>
 <a class="en tab-en" href="{{R}}en/index.html">CONTENTS</a>
-<a class="zh" href="{other_href}" lang="zh-CN">{kai("中")}</a>
 </nav>"""
 
 
@@ -267,7 +260,7 @@ def build_intro():
 </nav>
 <div class="intro-foot">
 <span class="fig">{YEARS_EN}</span>
-<a href="{ME}">JUAN ZHONG <span class="zh">{kai("钟娟")}</span> ↗</a>
+<a href="{ME}">JUAN ZHONG <span class="zh">{kai("钟娟")}</span></a>
 </div>
 </main>"""
     page("index.html", "en", "A Collection of Writings 书写选集 · Juan Zhong", body, "p-intro", zh_body=True)
@@ -528,6 +521,8 @@ def build_work(w, siblings):
             return "<span></span>"
         big, bl, _, _ = main_title(x)
         t = f'<span class="{bl}">{kai(big) if bl == "zh" else esc(big)}</span>'
+        if x.get("zh_index_mark"):  # tell the two 杂记 apart
+            t += f' <span class="pn-mark">{date_zh(x).split(" ")[0]}</span>'
         return f'<a href="{x["slug"]}.html">{"← " + t if arrow_left else t + " →"}</a>'
 
     body = f"""{nav_zh}

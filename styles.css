@@ -9,7 +9,8 @@
 :root {
     --en: 'Optima nova', Optima, 'Optima Fallback', serif;
     --zh: 'Kaiti SC', 'STKaiti', 'Writing Kai', 'KaiTi', 'Kaiti TC', serif;
-    --song: 'Songti SC', 'STSong', 'Noto Serif SC', 'SimSun', serif;
+    /* Chinese body: Latin letters and numbers in Optima (as on /me), Chinese in Songti */
+    --song: 'Optima nova', Optima, 'Optima Fallback', 'Songti SC', 'STSong', 'Noto Serif SC', 'SimSun', serif;
     --fig: 'Art Figures', 'Optima nova', Optima, 'Optima Fallback', serif;
     --ink: #222;
     --soft: #666;
@@ -94,7 +95,7 @@ a:hover { text-decoration: underline; text-underline-offset: 4px; text-decoratio
 .pcard .main { font-size: 14px; letter-spacing: .16em; text-transform: uppercase; display: inline-block; margin-bottom: 8px; color: #000; }
 .pcard .subs a, .pcard .subs span { display: block; font-style: italic; font-size: 18px; line-height: 1.55; color: var(--soft); }
 .pcard .subs .x { color: #aaa; }
-.pcard .subs small { font-style: normal; font-size: 11px; letter-spacing: .08em; color: #999; margin-left: .45em; }
+.pcard .subs small { font-style: normal; font-size: 11px; letter-spacing: .08em; color: #999; margin-left: .45em; white-space: nowrap; }
 .pcard .endrow { margin-top: auto; padding-top: 56px; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
 .pcard .year { font-size: 18px; letter-spacing: .22em; color: #333; }
 .pcard .note { font-size: 12px; letter-spacing: .04em; color: var(--faint); font-style: italic; text-align: right; }
@@ -217,6 +218,7 @@ a:hover { text-decoration: underline; text-underline-offset: 4px; text-decoratio
 .pn .up { letter-spacing: .14em; font-size: 12px; justify-self: center; }
 .pn .zh { font-size: 15px; letter-spacing: .15em; color: #333; }
 .pn .up .zh { color: inherit; font-size: 14px; }
+.pn .pn-mark { font-size: 11px; letter-spacing: .1em; color: #999; }
 
 .site-foot { width: 100%; max-width: 600px; margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--line); display: flex; justify-content: center; align-items: baseline; flex-wrap: wrap; gap: 6px 28px; font-size: 12px; letter-spacing: .12em; color: var(--faint); }
 .site-foot a { padding: 10px 0; }

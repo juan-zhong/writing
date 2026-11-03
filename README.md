@@ -40,7 +40,8 @@ Poems, essays, translations and notes by Juan Zhong 钟娟, in Chinese and Engli
 
 2. Below the header, paste the text exactly as written. Blank lines separate
    stanzas or paragraphs; two or more blank lines make a wider gap.
-   For lyrics translations, alternate lines: one Chinese line, then its English line.
+   For lyrics translations, paste the English translation only, stanzas separated by blank lines;
+   the original song is reached through the `listen:` link.
 
 3. Run `python3 build.py`, then commit everything (content and the regenerated HTML).
 
