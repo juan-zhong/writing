@@ -59,8 +59,10 @@ a:hover { text-decoration: underline; text-underline-offset: 4px; text-decoratio
 .vcard { max-width: 980px; min-height: 660px; padding: 64px 64px 64px 56px; display: flex; flex-direction: row-reverse; justify-content: space-between; align-items: stretch; gap: 44px; }
 .v { writing-mode: vertical-rl; }
 .vcard .title h1 { font-weight: 400; font-size: 54px; letter-spacing: .32em; line-height: 1; }
-.vcard .toc { flex: 1; display: flex; flex-direction: row-reverse; flex-wrap: wrap; align-content: center; gap: 48px 40px; }
-.vcard .g { writing-mode: vertical-rl; display: flex; flex-direction: column; }
+.vcard .toc { flex: 1; min-width: 0; display: flex; flex-direction: row-reverse; flex-wrap: wrap; align-content: center; gap: 48px 40px; }
+/* each group is a plain vertical block (no nested flex): Safari lays out
+   vertical text inside flex items unreliably */
+.vcard .g { writing-mode: vertical-rl; display: block; flex: none; height: max-content; }
 .vcard .g a, .vcard .g span.s { display: block; }
 .vcard .m { font-size: 19px; letter-spacing: .42em; line-height: 1.6; color: #000; margin-left: 12px; }
 .vcard .s { font-size: 15px; letter-spacing: .22em; line-height: 1.9; color: #555; padding-top: 2.6em; }
@@ -80,6 +82,13 @@ a:hover { text-decoration: underline; text-underline-offset: 4px; text-decoratio
     .vcard .year { font-size: 12px; color: #8a8a8a; letter-spacing: .12em; }
     .vcard .name { font-size: 13px; letter-spacing: .3em; }
     .vcard .lang { right: 16px; bottom: 56px; }
+}
+@media (max-width: 360px) {
+    .vcard { padding: 48px 10px 48px 8px; gap: 12px; }
+    .vcard .title h1 { font-size: 30px; }
+    .vcard .toc { gap: 30px 16px; }
+    .vcard .m { font-size: 15px; }
+    .vcard .s { font-size: 12.5px; letter-spacing: .16em; }
 }
 
 /* ---------- English contents: poster ---------- */
@@ -174,6 +183,7 @@ a:hover { text-decoration: underline; text-underline-offset: 4px; text-decoratio
 .tr .course { font-size: 12px; font-style: italic; color: #999; }
 .btn { display: inline-block; margin-top: 18px; font-size: 12px; letter-spacing: .14em; color: #333; border: 1px solid #ccc; padding: 12px 20px; }
 .btn:hover { text-decoration: none; border-color: #333; }
+.btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 14px; }
 
 /* the text itself */
 .text { font-size: 18px; color: var(--ink); width: 100%; text-align: left; }

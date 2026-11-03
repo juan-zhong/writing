@@ -10,4 +10,5 @@ kind: lyrics
 artist_zh: 后海大鲨鱼
 artist_en: Queen Sea Big Shark
 listen: https://music.youtube.com/watch?v=KCroI7t8j0A
+pdf: pdf/mammoth.pdf
 ---

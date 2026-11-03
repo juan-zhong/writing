@@ -460,10 +460,15 @@ def translation_section(w, lang):
             credit = f'<p class="meta zh">{credit}</p>'
         else:
             credit = f'<p class="meta">{esc(w["artist_en"]).upper()} · TRANSLATED BY JUAN ZHONG · ZH → EN</p>'
-        btn = ""
+        btns = []
+        if w.get("pdf"):  # the translation sheet, uploaded by hand to pdf/
+            href = w["pdf"] if w["pdf"].startswith("http") else "../" + w["pdf"]
+            label = f'<span class="zh">{kai("译文")}</span> PDF' if lang == "zh" else "TRANSLATION (PDF)"
+            btns.append(f'<a class="btn" href="{attr(href)}">{label}</a>')
         if w.get("listen"):
             label = f'LISTEN <span class="zh">{kai("收听")}</span> ↗' if lang == "zh" else "LISTEN ↗"
-            btn = f'<a class="btn" href="{attr(w["listen"])}">{label}</a>'
+            btns.append(f'<a class="btn" href="{attr(w["listen"])}">{label}</a>')
+        btn = f'<div class="btns">{"".join(btns)}</div>' if btns else ""
         text = render_lyrics(w) if w["body"].strip() else ""
         return f"""<section class="work tr" id="{w['slug']}">
 {title_html(w, "h2")}
@@ -474,10 +479,10 @@ def translation_section(w, lang):
     # annotated translation published as PDF
     if lang == "zh":
         credit = f'<p class="meta zh">{kai(w["author_zh"])} {kai("原著")} {w["source_year"]} · {kai("钟娟")} {kai("注释英译")} {w["written"]} · {kai("中译英")}</p>'
-        btn_label = f'<span class="zh">{kai("译文")}</span> PDF ↗'
+        btn_label = f'<span class="zh">{kai("译文")}</span> PDF'
     else:
         credit = f'<p class="meta">{esc(w["author_en"]).upper()}, {w["source_year"]} · ANNOTATED TRANSLATION BY JUAN ZHONG, {w["written"]} · ZH → EN</p>'
-        btn_label = "TRANSLATION (PDF) ↗"
+        btn_label = "TRANSLATION (PDF)"
     return f"""<section class="work tr" id="{w['slug']}">
 {title_html(w, "h2")}
 {credit}
