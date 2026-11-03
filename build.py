@@ -243,22 +243,34 @@ def cat_header(cat):
 # ---------- pages ----------
 
 def build_intro():
-    zh = "求学期间，我有幸接受了不同领域的学术训练，涵盖人类学、历史学、文学、政治学、社会学、哲学和心理学等学科。虽然我目前主攻语言学，我对其他领域依旧保持着浓厚的兴趣。这个页面收录了语言学之外的文字作品，包括诗歌，散文，随笔，杂记，翻译，笔记等。因为平时使用多种语言，所以我的写作有中文的也有英文的，翻译有英译中也有中译英。读者可以选择中文或英文查看目录。"
-    en = "Over the years, I was fortunate to receive academic training across various fields, including anthropology, history, literature, political science, sociology, philosophy and psychology. Although my main field is now linguistics, I remain deeply interested in these other disciplines. This page collects my writing beyond linguistics: poems, prose, essays, miscellanies, translations and notes. Because I use several languages in daily life, I write in both Chinese and English, and I translate in both directions, from English into Chinese and from Chinese into English. Readers may view the contents in either Chinese or English."
-    body = f"""<main class="card intro">
-<header class="intro-head">
-<p class="kicker">A Collection of</p>
-<h1>WRITINGS</h1>
-<p class="zh sub" lang="zh-CN">{kai("书写选集")}</p>
-</header>
-<div class="intro-text">
-<p class="zh-body" lang="zh-CN">{esc(zh)}</p>
-<p lang="en">{esc(en)}</p>
+    zh = [
+        "求学期间，我接受过不同的人文社科领域的学术训练。这些学习经历和我的日常生活经验，是我思考和写作的来源。这里收录了我在学术论文之外的部分习作，包括诗歌、散文、杂记、笔记和翻译。",
+        "我用中文和英文写作，偶尔也做翻译。目录可选择中文或英文，正文则按各篇作品的语言呈现。",
+    ]
+    en = [
+        "Over the years, I received academic training in various fields across the arts and sciences. My studies and everyday experiences inform my thinking and writing. This site collects some of my writings beyond academic papers, including poems, essays, notes, and translations.",
+        "I write in Chinese and English and occasionally translate. The table of contents can be viewed in Chinese or English, while each piece is presented in the language in which it was written or translated.",
+    ]
+    zh_p = "\n".join(f"<p>{esc(x)}</p>" for x in zh)
+    en_p = "\n".join(f"<p>{esc(x)}</p>" for x in en)
+    body = f"""<main class="card intro spread-card">
+<div class="spread">
+<section class="side side-zh" lang="zh-CN">
+<h1 class="zh">{kai("书写选集")}</h1>
+<div class="intro-body zh-body">
+{zh_p}
 </div>
-<nav class="choose" aria-label="Choose a language">
-<a class="zh" href="zh/index.html" lang="zh-CN">{kai("中文")}</a>
-<a href="en/index.html" lang="en">ENGLISH</a>
-</nav>
+<a class="go zh" href="zh/index.html">{kai("目录")} →</a>
+</section>
+<div class="spine" aria-hidden="true"></div>
+<section class="side side-en" lang="en">
+<h1><span class="kick">A Collection of</span>WRITINGS</h1>
+<div class="intro-body">
+{en_p}
+</div>
+<a class="go" href="en/index.html">CONTENTS →</a>
+</section>
+</div>
 <div class="intro-foot">
 <span class="fig">{YEARS_EN}</span>
 <a href="{ME}">JUAN ZHONG <span class="zh">{kai("钟娟")}</span></a>
