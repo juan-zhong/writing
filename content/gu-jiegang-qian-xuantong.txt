@@ -1,0 +1,16 @@
+---
+slug: gu-jiegang-qian-xuantong
+category: translations
+title_zh: 與錢玄同先生論古史書
+title_en: Discussing ancient history with Mr. Qian Xuantong
+original: zh
+direction: zh-en
+order: 3
+kind: pdf
+author_zh: 顾颉刚
+author_en: Gu Jiegang
+source_year: 1923
+written: 2020
+course: Selected Readings in Early Chinese, Columbia University
+pdf: https://juan-zhong.github.io/me/Final%20Translation%20Project%20Juan%20Zhong.pdf
+---

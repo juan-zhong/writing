@@ -1,0 +1,13 @@
+---
+slug: mammoth
+category: translations
+title_zh: 猛犸
+title_en: Mammoth
+original: zh
+direction: zh-en
+order: 2
+kind: lyrics
+artist_zh: 后海大鲨鱼
+artist_en: Queen Sea Big Shark
+listen: 
+---

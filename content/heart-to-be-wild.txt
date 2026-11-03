@@ -1,0 +1,13 @@
+---
+slug: heart-to-be-wild
+category: translations
+title_zh: 心要野
+title_en: Heart to be wild
+original: zh
+direction: zh-en
+order: 1
+kind: lyrics
+artist_zh: 后海大鲨鱼
+artist_en: Queen Sea Big Shark
+listen: 
+---
