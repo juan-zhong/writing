@@ -146,6 +146,7 @@ a:hover { text-decoration: underline; text-underline-offset: 4px; text-decoratio
 .cat-head p { font-size: 18px; letter-spacing: .3em; padding-left: .3em; color: var(--soft); }
 
 .col { width: 100%; max-width: 600px; display: flex; flex-direction: column; }
+.col-poems { max-width: 700px; }
 .cat-note { font-size: 12px; font-style: italic; color: var(--faint); margin-top: 16px; }
 
 /* lists */

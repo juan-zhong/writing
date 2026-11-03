@@ -115,6 +115,8 @@ def title_html(w, tag, cls=""):
 def blocks(body):
     """Paragraphs/stanzas split on blank lines; a run of 2+ blank lines is a gap."""
     out, cur, blanks = [], [], 0
+    # U+2028/U+2029 are soft line breaks (Shift+Return in Notes): real line breaks, not spaces
+    body = body.replace(" ", "\n").replace(" ", "\n")
     for line in body.split("\n"):
         if line.strip() == "":
             if cur:
@@ -396,7 +398,7 @@ def build_poems(by, lang):
     body = f"""{tabs(lang, other)}
 {cat_header("poems")}
 <nav class="jump" aria-label="{"本页诗目" if lang == "zh" else "Poems on this page"}">{"".join(jump)}</nav>
-<main class="col">
+<main class="col col-poems">
 {chr(10).join(poem_section(w, lang) for w in ws)}
 {note}
 </main>
