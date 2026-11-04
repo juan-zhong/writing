@@ -1,7 +1,7 @@
 ---
 slug: untitled
 category: poems
-title_en: untitled
+title_en: Untitled
 title_zh: 无题
 original: en
 written: 2023-10

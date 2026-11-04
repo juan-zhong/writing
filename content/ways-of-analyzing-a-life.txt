@@ -2,7 +2,7 @@
 slug: ways-of-analyzing-a-life
 category: essays
 title_zh: 生活的分析方法
-title_en: Ways of Analyzing a Life
+title_en: Ways of analyzing a life
 original: zh
 written: 2024-11
 order: 6

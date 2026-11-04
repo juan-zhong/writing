@@ -2,7 +2,7 @@
 slug: xianyou
 category: poems
 title_zh: 闲游
-title_en: Idle Wandering
+title_en: Idle wandering
 original: zh
 written: 2025-11
 order: 2

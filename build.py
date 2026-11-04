@@ -216,7 +216,7 @@ def tabs(lang, other_href=None):
     # other_href is no longer shown: the 中 / EN switch lives only on the two contents pages
     if lang == "zh":
         return f"""<nav class="tabs" aria-label="导航">
-<a class="zh" href="{{R}}index.html">{kai("书写选集")}</a>
+<a class="zh" href="{{R}}index.html">{kai("随笔")}</a>
 <a class="zh" href="{{R}}zh/index.html">{kai("目录")}</a>
 </nav>"""
     return f"""<nav class="tabs" aria-label="Navigation">
@@ -246,7 +246,7 @@ def cat_header(cat):
 
 def build_intro():
     zh = [
-        "求学期间，我接受过不同的人文社科领域的学术训练。这些学习经历和我的日常生活经验，是我思考和写作的来源。这里收录了我在学术论文之外的部分习作，包括诗歌、散文、杂记、笔记和翻译。",
+        "求学期间，我接受过不同的人文社科领域的学术训练。这些学习经历和我的日常生活经验，是我思考和写作的来源。这里选录了我在学术论文之外的习作，包括诗歌、散文、杂记、笔记和翻译。",
         "我用中文和英文写作，偶尔也做翻译。目录可选择中文或英文，正文则按各篇作品的语言呈现。",
     ]
     en = [
@@ -258,7 +258,7 @@ def build_intro():
     body = f"""<main class="card intro spread-card">
 <div class="spread">
 <section class="side side-zh" lang="zh-CN">
-<h1 class="zh">{kai("书写选集")}</h1>
+<h1 class="zh">{kai("随笔")}</h1>
 <div class="intro-body zh-body">
 {zh_p}
 </div>
@@ -278,7 +278,7 @@ def build_intro():
 <a href="{ME}">JUAN ZHONG <span class="zh">{kai("钟娟")}</span></a>
 </div>
 </main>"""
-    page("index.html", "en", "A Collection of Writings 书写选集 · Juan Zhong", body, "p-intro", zh_body=True)
+    page("index.html", "en", "A Collection of Writings 随笔 · Juan Zhong", body, "p-intro", zh_body=True)
 
 
 def build_index_zh(by):
@@ -310,14 +310,14 @@ def build_index_zh(by):
             items.append(f'<a class="s x" href="notes.html#selects">{kai("选录")}<span class="mk">{kai("待整理")}</span></a>')
         groups.append('<div class="g">\n' + "\n".join(items) + "\n</div>")
     body = f"""<main class="card vcard">
-<div class="title"><h1 class="v"><a href="../index.html">{kai("书写选集")}</a></h1></div>
+<div class="title"><h1 class="v"><a href="../index.html">{kai("随笔")}</a></h1></div>
 <nav class="toc" aria-label="目录">
 {chr(10).join(groups)}
 </nav>
 <div class="foot"><p class="year">{kai(YEARS_ZH)}</p><p class="note">{kai("标英者原以英文写成")}</p><p class="name"><a href="{ME}">{kai("钟娟")}</a></p></div>
 <a class="lang en" href="../en/index.html" lang="en">EN</a>
 </main>"""
-    page("zh/index.html", "zh-CN", "书写选集 · 钟娟", body, "p-index-zh", remember="zh")
+    page("zh/index.html", "zh-CN", "随笔 · 钟娟", body, "p-index-zh", remember="zh")
 
 
 def build_index_en(by):
@@ -403,7 +403,7 @@ def build_poems(by, lang):
 {note}
 </main>
 {footer(lang)}"""
-    title = "诗集 · 书写选集 · 钟娟" if lang == "zh" else "Poems · Writings · Juan Zhong"
+    title = "诗集 · 随笔 · 钟娟" if lang == "zh" else "Poems · Writings · Juan Zhong"
     page(f"{lang}/poems.html", "zh-CN" if lang == "zh" else "en", title, body, f"p-cat p-{lang}", zh_body=True, remember=lang)
 
 
@@ -435,7 +435,7 @@ def build_essays(by, lang):
 {note}
 </main>
 {footer(lang)}"""
-    title = "文集 · 书写选集 · 钟娟" if lang == "zh" else "Essays · Writings · Juan Zhong"
+    title = "文集 · 随笔 · 钟娟" if lang == "zh" else "Essays · Writings · Juan Zhong"
     page(f"{lang}/essays.html", "zh-CN" if lang == "zh" else "en", title, body, f"p-cat p-{lang}", remember=lang)
 
 
@@ -464,7 +464,7 @@ def build_notes(by, lang):
 </section>
 </main>
 {footer(lang)}"""
-    title = "笔记 · 书写选集 · 钟娟" if lang == "zh" else "Notes · Writings · Juan Zhong"
+    title = "笔记 · 随笔 · 钟娟" if lang == "zh" else "Notes · Writings · Juan Zhong"
     page(f"{lang}/notes.html", "zh-CN" if lang == "zh" else "en", title, body, f"p-cat p-{lang}", remember=lang)
 
 
@@ -480,9 +480,7 @@ def translation_section(w, lang):
             href = w["pdf"] if w["pdf"].startswith("http") else "../" + w["pdf"]
             label = f'<span class="zh">{kai("译文")}</span> PDF' if lang == "zh" else "TRANSLATION (PDF)"
             btns.append(f'<a class="btn" href="{attr(href)}">{label}</a>')
-        if w.get("listen"):
-            label = f'LISTEN <span class="zh">{kai("收听")}</span> ↗' if lang == "zh" else "LISTEN ↗"
-            btns.append(f'<a class="btn" href="{attr(w["listen"])}">{label}</a>')
+        # the listen link now lives inside the translation PDF, so no button here
         btn = f'<div class="btns">{"".join(btns)}</div>' if btns else ""
         text = render_lyrics(w) if w["body"].strip() else ""
         return f"""<section class="work tr" id="{w['slug']}">
@@ -514,7 +512,7 @@ def build_translations(by, lang):
 {chr(10).join(translation_section(w, lang) for w in by["translations"])}
 </main>
 {footer(lang)}"""
-    title = "翻译 · 书写选集 · 钟娟" if lang == "zh" else "Translations · Writings · Juan Zhong"
+    title = "翻译 · 随笔 · 钟娟" if lang == "zh" else "Translations · Writings · Juan Zhong"
     page(f"{lang}/translations.html", "zh-CN" if lang == "zh" else "en", title, body, f"p-cat p-{lang}", zh_body=True, remember=lang)
 
 
@@ -567,7 +565,7 @@ def build_work(w, siblings):
 }})();
 </script>"""
     big, _, _, _ = main_title(w)
-    page(f"works/{w['slug']}.html", "zh-CN" if orig == "zh" else "en", f"{big} · {zh_cat} · 书写选集 · 钟娟", body, f"p-work form-{w.get('form', 'lines')}", zh_body=True)
+    page(f"works/{w['slug']}.html", "zh-CN" if orig == "zh" else "en", f"{big} · {zh_cat} · 随笔 · 钟娟", body, f"p-work form-{w.get('form', 'lines')}", zh_body=True)
 
 
 def subset_font():

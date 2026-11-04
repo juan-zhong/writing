@@ -253,3 +253,7 @@ a:hover { text-decoration: underline; text-underline-offset: 4px; text-decoratio
     .pn { grid-template-columns: 1fr 1fr; }
     .pn .up { grid-column: 1 / -1; grid-row: 2; }
 }
+
+/* poems: lines centred, as on a printed page of verse; no hanging indent when centred */
+.col-poems .text.verse { text-align: center; }
+.col-poems .text.verse .ln { padding-left: 0; text-indent: 0; }
