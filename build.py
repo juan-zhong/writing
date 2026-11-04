@@ -319,7 +319,8 @@ def build_index_zh(by):
                 items.append(f'<span class="s x">{t}{mk_h}</span>')
             else:
                 items.append(f'<a class="s" href="{href}">{t}{mk_h}</a>')
-        groups.append('<div class="g">\n' + "\n".join(items) + "\n</div>")
+        # the number of entry columns sets the group's width in CSS (Safari can't measure vertical text in a grid reliably)
+        groups.append(f'<div class="g" style="--n:{len(items) - 1}">\n' + "\n".join(items) + "\n</div>")
     body = f"""<main class="card vcard">
 <div class="title"><h1 class="v"><a href="../index.html">{kai("随笔")}</a></h1></div>
 <nav class="toc" aria-label="目录">

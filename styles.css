@@ -70,35 +70,48 @@ a:hover { text-decoration: underline; text-underline-offset: 4px; text-decoratio
 
 /* ---------- 中文目录：题跋式竖排 ---------- */
 .p-index-zh { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 48px 12px; font-family: var(--zh); }
-.vcard { max-width: 980px; min-height: 660px; padding: 64px 64px 64px 56px; display: flex; flex-direction: row-reverse; justify-content: space-between; align-items: stretch; gap: 44px; }
+.vcard {
+    /* every vertical column has a fixed width, so the layout never depends on the browser measuring vertical text
+       (Safari gets that wrong): --c = one entry column, --h = a group heading column */
+    --c: 28px; --h: 42px; --t: 64px; --f: 26px;
+    max-width: 1120px; min-height: 660px; padding: 64px 64px 64px 56px;
+    display: flex; flex-direction: row-reverse; justify-content: space-between; align-items: stretch; gap: 44px;
+}
 .v { writing-mode: vertical-rl; }
-.vcard .title h1 { font-weight: 400; font-size: 54px; letter-spacing: .32em; line-height: 1; }
-.vcard .toc { flex: 1; min-width: 0; display: flex; flex-direction: row-reverse; flex-wrap: wrap; align-content: center; gap: 48px 40px; }
-/* each group is a plain vertical block (no nested flex): Safari lays out
-   vertical text inside flex items unreliably */
-.vcard .g { writing-mode: vertical-rl; display: block; flex: none; height: max-content; }
+.vcard .title { flex: none; width: var(--t); }
+.vcard .title h1 { font-weight: 400; font-size: 54px; letter-spacing: .32em; line-height: 1; width: var(--t); }
+/* the four groups: one row on wide screens, two rows of two in the middle, one per row on phones; read right to left */
+.vcard .toc { flex: 1 1 0; min-width: 0; display: grid; direction: rtl; grid-template-columns: repeat(4, auto); justify-content: space-between; align-content: center; align-items: start; gap: 48px 24px; }
+.vcard .g { direction: ltr; writing-mode: vertical-rl; display: block; width: calc(var(--h) + var(--n, 0) * var(--c)); height: max-content; }
 .vcard .g a, .vcard .g span.s { display: block; }
-.vcard .m { font-size: 19px; letter-spacing: .42em; line-height: 1.6; color: #000; margin-left: 12px; }
-.vcard .s { font-size: 15px; letter-spacing: .22em; line-height: 1.9; color: #555; padding-top: 2.6em; }
+.vcard .m { font-size: 19px; letter-spacing: .42em; width: calc(var(--h) - 12px); line-height: calc(var(--h) - 12px); color: #000; margin-left: 12px; white-space: nowrap; }
+.vcard .s { font-size: 15px; letter-spacing: .22em; width: var(--c); line-height: var(--c); color: #555; padding-top: 2.6em; white-space: nowrap; }
 .vcard .s.x { color: #777; }
 .vcard .mk { font-size: 11px; letter-spacing: .1em; color: #777; margin-top: .7em; }
-.vcard .foot { writing-mode: vertical-rl; display: flex; justify-content: space-between; align-items: center; gap: 22px; }
+.vcard .foot { flex: none; width: var(--f); writing-mode: vertical-rl; display: flex; justify-content: space-between; align-items: center; gap: 22px; }
+.vcard .foot p { width: var(--f); line-height: var(--f); text-align: start; white-space: nowrap; }
 .vcard .year { font-size: 15px; letter-spacing: .25em; color: #333; }
 .vcard .note { font-size: 11px; letter-spacing: .2em; color: #777; }
 .vcard .name { font-size: 19px; letter-spacing: .6em; color: #333; }
 .vcard .lang { position: absolute; right: 64px; bottom: 64px; writing-mode: vertical-rl; text-orientation: upright; font-size: 13px; line-height: 1; color: var(--soft); }
-@media (max-width: 640px) {
-    .vcard { padding: 56px 16px 56px 14px; gap: 18px; min-height: 0; }
+@media (max-width: 1139px) {
+    .vcard .toc { grid-template-columns: repeat(2, auto); justify-content: space-around; gap: 56px 32px; }
+}
+@media (max-width: 819px) {
+    .vcard { --c: 24px; --h: 32px; --t: 44px; --f: 18px; padding: 56px 16px 56px 14px; gap: 18px; min-height: 0; }
     .vcard .title h1 { font-size: 36px; letter-spacing: .4em; }
-    .vcard .toc { gap: 36px 22px; align-content: flex-start; padding-top: 48px; }
-    .vcard .m { font-size: 16px; margin-left: 6px; }
+    .vcard .toc { justify-content: start; align-content: start; gap: 36px 28px; padding-top: 48px; }
+    .vcard .m { font-size: 16px; margin-left: 6px; width: calc(var(--h) - 6px); line-height: calc(var(--h) - 6px); }
     .vcard .s { font-size: 13.5px; letter-spacing: .2em; padding-top: 2.4em; }
     .vcard .year { font-size: 12px; color: #666; letter-spacing: .12em; }
     .vcard .name { font-size: 13px; letter-spacing: .3em; }
     .vcard .lang { right: 16px; bottom: 56px; }
 }
+@media (max-width: 559px) {
+    .vcard .toc { grid-template-columns: auto; }
+}
 @media (max-width: 360px) {
-    .vcard { padding: 48px 10px 48px 8px; gap: 12px; }
+    .vcard { --c: 20px; --h: 28px; --t: 38px; padding: 48px 10px 48px 8px; gap: 12px; }
     .vcard .title h1 { font-size: 30px; }
     .vcard .toc { gap: 30px 16px; }
     .vcard .m { font-size: 15px; }
