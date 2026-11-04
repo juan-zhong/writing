@@ -64,5 +64,14 @@
   var up = document.querySelector('.pn .up'); if (up) up.href = up.getAttribute('data-up-' + l);
 })();
 </script>
+<a href="#" class="to-top" id="toTop" aria-label="Back to top" title="Back to top">↑</a>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true }); f();
+  b.addEventListener('click', function (e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
 </body>
 </html>

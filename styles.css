@@ -14,7 +14,7 @@
     --fig: 'Art Figures', 'Optima nova', Optima, 'Optima Fallback', serif;
     --ink: #222;
     --soft: #666;
-    --faint: #888;
+    --faint: #666;
     --line: #e0e0e0;
     --line2: #ececec;
 }
@@ -49,10 +49,13 @@ a:hover { text-decoration: underline; text-underline-offset: 4px; text-decoratio
 .go { margin-top: auto; padding-top: 40px; align-self: flex-start; color: #333; }
 .go.zh { font-size: 17px; letter-spacing: .3em; }
 .side-en .go { font-size: 13px; letter-spacing: .24em; }
-.intro-foot { margin-top: 56px; padding-top: 18px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 12px; font-size: 13px; letter-spacing: .12em; color: var(--soft); }
+.intro-foot { margin-top: 56px; padding-top: 18px; border-top: 1px solid #eee; display: grid; grid-template-columns: 1fr auto 1fr; align-items: baseline; gap: 12px; font-size: 13px; letter-spacing: .12em; color: var(--soft); }
+.intro-foot > :first-child { justify-self: start; }
+.intro-foot .fig { justify-self: center; }
+.intro-foot .en-name { justify-self: end; }
 .intro-foot .fig { font-size: 15px; letter-spacing: .22em; color: #333; }
 .intro-foot a { padding: 10px 0; }
-.intro-foot .zh { letter-spacing: .2em; }
+.intro-foot .zh { font-size: 15px; letter-spacing: .25em; }
 @media (max-width: 720px) {
     .p-intro { padding: 40px 12px; }
     .spread-card { padding: 48px 24px 32px; }
@@ -77,11 +80,11 @@ a:hover { text-decoration: underline; text-underline-offset: 4px; text-decoratio
 .vcard .g a, .vcard .g span.s { display: block; }
 .vcard .m { font-size: 19px; letter-spacing: .42em; line-height: 1.6; color: #000; margin-left: 12px; }
 .vcard .s { font-size: 15px; letter-spacing: .22em; line-height: 1.9; color: #555; padding-top: 2.6em; }
-.vcard .s.x { color: #999; }
-.vcard .mk { font-size: 11px; letter-spacing: .1em; color: #999; margin-top: .7em; }
+.vcard .s.x { color: #777; }
+.vcard .mk { font-size: 11px; letter-spacing: .1em; color: #777; margin-top: .7em; }
 .vcard .foot { writing-mode: vertical-rl; display: flex; justify-content: space-between; align-items: center; gap: 22px; }
 .vcard .year { font-size: 15px; letter-spacing: .25em; color: #333; }
-.vcard .note { font-size: 11px; letter-spacing: .2em; color: #999; }
+.vcard .note { font-size: 11px; letter-spacing: .2em; color: #777; }
 .vcard .name { font-size: 19px; letter-spacing: .6em; color: #333; }
 .vcard .lang { position: absolute; right: 64px; bottom: 64px; writing-mode: vertical-rl; text-orientation: upright; font-size: 13px; line-height: 1; color: var(--soft); }
 @media (max-width: 640px) {
@@ -90,7 +93,7 @@ a:hover { text-decoration: underline; text-underline-offset: 4px; text-decoratio
     .vcard .toc { gap: 36px 22px; align-content: flex-start; padding-top: 48px; }
     .vcard .m { font-size: 16px; margin-left: 6px; }
     .vcard .s { font-size: 13.5px; letter-spacing: .2em; padding-top: 2.4em; }
-    .vcard .year { font-size: 12px; color: #8a8a8a; letter-spacing: .12em; }
+    .vcard .year { font-size: 12px; color: #666; letter-spacing: .12em; }
     .vcard .name { font-size: 13px; letter-spacing: .3em; }
     .vcard .lang { right: 16px; bottom: 56px; }
 }
@@ -113,9 +116,9 @@ a:hover { text-decoration: underline; text-underline-offset: 4px; text-decoratio
 .pcard .big { font-weight: 400; font-size: 46px; letter-spacing: .08em; line-height: 1.1; margin-top: 46px; }
 .pcard .toc { display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; row-gap: 30px; margin-top: 46px; }
 .pcard .main { font-size: 14px; letter-spacing: .16em; text-transform: uppercase; display: inline-block; margin-bottom: 8px; color: #000; }
-.pcard .subs a, .pcard .subs span { display: block; font-style: italic; font-size: 18px; line-height: 1.55; color: var(--soft); }
-.pcard .subs .x { color: #aaa; }
-.pcard .subs small { font-style: normal; font-size: 11px; letter-spacing: .08em; color: #999; margin-left: .45em; white-space: nowrap; }
+.pcard .subs a, .pcard .subs span { display: block; font-style: italic; font-size: 18px; line-height: 1.55; padding: 3px 0; color: var(--soft); }
+.pcard .subs .x { color: #888; }
+.pcard .subs small { font-style: normal; font-size: 11px; letter-spacing: .08em; color: #777; margin-left: .45em; white-space: nowrap; }
 .pcard .endrow { margin-top: auto; padding-top: 56px; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
 .pcard .year { font-size: 18px; letter-spacing: .22em; color: #333; }
 .pcard .note { font-size: 12px; letter-spacing: .04em; color: var(--faint); font-style: italic; text-align: right; }
@@ -126,7 +129,7 @@ a:hover { text-decoration: underline; text-underline-offset: 4px; text-decoratio
     .pcard .kicker { font-size: 15px; }
     .pcard .big { font-size: 28px; margin-top: 26px; }
     .pcard .toc { grid-template-columns: 1fr; row-gap: 22px; margin-top: 30px; }
-    .pcard .subs a, .pcard .subs span { font-size: 16px; }
+    .pcard .subs a, .pcard .subs span { font-size: 16px; padding: 6px 0; }
     .pcard .endrow { padding-top: 36px; }
     .pcard .year { font-size: 14px; }
     .pcard .note { text-align: left; }
@@ -162,19 +165,19 @@ a:hover { text-decoration: underline; text-underline-offset: 4px; text-decoratio
 .row .st2.en { font-style: italic; }
 .row .st2.zh { letter-spacing: .15em; }
 .row .d { font-size: 13px; letter-spacing: .1em; color: var(--faint); white-space: nowrap; }
-.row.x .t, .row.x .st2, .row.x .d { color: #aaa; }
-.row .flag { font-size: 13px; margin-left: 12px; letter-spacing: .1em; color: #999; }
+.row.x .t, .row.x .st2, .row.x .d { color: #888; }
+.row .flag { font-size: 13px; margin-left: 12px; letter-spacing: .1em; color: #777; }
 .row .flag.en { font-style: italic; font-size: 12px; letter-spacing: 0; }
 .selects { margin-top: 72px; }
 .sel-head { display: flex; align-items: baseline; gap: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
 .sel-head h2 { font-weight: 400; font-size: 15px; letter-spacing: .16em; color: #000; }
 .sel-head .zh { font-size: 17px; letter-spacing: .25em; color: var(--soft); }
-.sel-head .flag { font-size: 13px; color: #999; }
+.sel-head .flag { font-size: 13px; color: #777; }
 .sel-head .en.flag { font-style: italic; }
-.selects .row .t { font-size: 18px; color: #888; }
+.selects .row .t { font-size: 18px; color: #666; }
 .selects .row .t.zh { letter-spacing: .2em; }
-.selects .row .d.en { font-size: 12px; letter-spacing: .16em; color: #aaa; }
-.selects .row .d.zh { font-size: 15px; letter-spacing: .2em; color: #aaa; }
+.selects .row .d.en { font-size: 12px; letter-spacing: .16em; color: #888; }
+.selects .row .d.zh { font-size: 15px; letter-spacing: .2em; color: #888; }
 
 /* poems / translations: works on one page */
 .jump { display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 22px; max-width: 600px; font-size: 14px; color: var(--soft); margin-bottom: 40px; }
@@ -192,7 +195,7 @@ a:hover { text-decoration: underline; text-underline-offset: 4px; text-decoratio
 .tr { display: flex; flex-direction: column; align-items: center; text-align: center; }
 .tr .t-big.zh { font-size: 28px; letter-spacing: .2em; padding-left: .2em; }
 .tr .meta { margin: 12px 0 6px; }
-.tr .course { font-size: 12px; font-style: italic; color: #999; }
+.tr .course { font-size: 12px; font-style: italic; color: #777; }
 .btn { display: inline-block; margin-top: 18px; font-size: 12px; letter-spacing: .14em; color: #333; border: 1px solid #ccc; padding: 12px 20px; }
 .btn:hover { text-decoration: none; border-color: #333; }
 .btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 14px; }
@@ -229,7 +232,7 @@ a:hover { text-decoration: underline; text-underline-offset: 4px; text-decoratio
 .work-head .t-big.en { font-size: 36px; letter-spacing: .04em; }
 .work-head .t-small.en { font-size: 16px; }
 .work-head .meta { margin: 14px 0 0; }
-.cnote { margin-top: 18px; font-size: 13px; color: #777; display: flex; flex-direction: column; gap: 4px; }
+.cnote { margin-top: 18px; font-size: 13px; color: #555; display: flex; flex-direction: column; gap: 4px; }
 .cnote .zh { letter-spacing: .15em; }
 .cnote .en { font-style: italic; font-size: 12px; }
 .article { max-width: 600px; }
@@ -240,7 +243,7 @@ a:hover { text-decoration: underline; text-underline-offset: 4px; text-decoratio
 .pn .up { letter-spacing: .14em; font-size: 12px; justify-self: center; }
 .pn .zh { font-size: 15px; letter-spacing: .15em; color: #333; }
 .pn .up .zh { color: inherit; font-size: 14px; }
-.pn .pn-mark { font-size: 11px; letter-spacing: .1em; color: #999; }
+.pn .pn-mark { font-size: 11px; letter-spacing: .1em; color: #777; }
 
 .site-foot { width: 100%; max-width: 600px; margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--line); display: flex; justify-content: center; align-items: baseline; flex-wrap: wrap; gap: 6px 28px; font-size: 12px; letter-spacing: .12em; color: var(--faint); }
 .site-foot a { padding: 10px 0; }
@@ -257,3 +260,13 @@ a:hover { text-decoration: underline; text-underline-offset: 4px; text-decoratio
 /* poems: lines centred, as on a printed page of verse; no hanging indent when centred */
 .col-poems .text.verse { text-align: center; }
 .col-poems .text.verse .ln { padding-left: 0; text-indent: 0; }
+
+/* back-to-top button, as on /me and /art */
+.to-top { position: fixed; right: 24px; bottom: 24px; width: 40px; height: 40px; border: 1px solid #ccc; border-radius: 50%; background: #fff; color: #555; font-size: 18px; line-height: 38px; text-align: center; text-decoration: none; opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s, color .2s, border-color .2s; z-index: 100; font-family: var(--en); }
+.to-top.show { opacity: 1; visibility: visible; }
+.to-top:hover { color: #000; border-color: #000; text-decoration: none; }
+
+/* larger tap targets on the English contents page */
+.pcard .main { padding: 4px 0; }
+.pcard .lang { padding: 6px; margin: -6px; }
+.pcard .kicker a { display: inline-block; padding: 3px 0; }

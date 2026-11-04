@@ -2,7 +2,7 @@
 slug: xianyou
 category: poems
 title_zh: 闲游
-title_en: Idle wandering
+title_en: Idle Wandering
 original: zh
 written: 2025-11
 order: 2
@@ -13,7 +13,7 @@ form: verse
 我便继续走 小溪边遇见两只小鹿
 一只自顾自吃草
 一只太远没看清 大风吹 终于把乌云吹出一个窟窿 漏出一点蓝天
-晒到一点阳光 溪水波光粼粼 我以为游来一群金鱼 靠近细看 原来是风吹落的秋叶
+晒到一点阳光 溪水波光粼粼 我以为游来金鱼一群 靠近细看 原来是风吹落的秋叶
 斑驳红棕
 浮在水面 缓缓流动
 大风继续吹

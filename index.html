@@ -31,9 +31,19 @@
 </section>
 </div>
 <div class="intro-foot">
+<a class="zh" href="https://juan-zhong.github.io/me/" lang="zh-CN">钟娟</a>
 <span class="fig">2018–2026</span>
-<a href="https://juan-zhong.github.io/me/">JUAN ZHONG <span class="zh">钟娟</span></a>
+<a class="en-name" href="https://juan-zhong.github.io/me/">JUAN ZHONG</a>
 </div>
 </main>
+<a href="#" class="to-top" id="toTop" aria-label="Back to top" title="Back to top">↑</a>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true }); f();
+  b.addEventListener('click', function (e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
 </body>
 </html>

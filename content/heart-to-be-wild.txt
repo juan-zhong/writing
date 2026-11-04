@@ -2,7 +2,7 @@
 slug: heart-to-be-wild
 category: translations
 title_zh: 心要野
-title_en: Heart to be wild
+title_en: Heart to Be Wild
 original: zh
 direction: zh-en
 order: 1

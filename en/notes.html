@@ -19,7 +19,7 @@
 <p class="zh" lang="zh-CN">笔记</p>
 </header>
 <main class="col list">
-<a class="row" href="../works/gender-diversity.html"><span class="rt"><span class="t zh" lang="zh-CN">多元性别</span><span class="st2 en" lang="en">Gender diversity</span></span><span class="d">Updated Oct 2026</span></a>
+<a class="row" href="../works/gender-diversity.html"><span class="rt"><span class="t zh" lang="zh-CN">多元性别</span><span class="st2 en" lang="en">Gender Diversity</span></span><span class="d">Updated Oct 2026</span></a>
 <p class="cat-note">Written in Chinese.</p>
 <section class="selects" id="selects">
 <div class="sel-head"><h2 class="en">SELECTS</h2><span class="zh">选录</span><span class="en flag">(to be edited)</span></div>
@@ -34,5 +34,14 @@
 <a href="https://juan-zhong.github.io/me/">JUAN ZHONG <span class="zh">钟娟</span></a>
 <a href="https://juan-zhong.github.io/art/">ART</a>
 </footer>
+<a href="#" class="to-top" id="toTop" aria-label="Back to top" title="Back to top">↑</a>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true }); f();
+  b.addEventListener('click', function (e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
 </body>
 </html>

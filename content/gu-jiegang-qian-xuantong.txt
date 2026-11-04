@@ -2,7 +2,7 @@
 slug: gu-jiegang-qian-xuantong
 category: translations
 title_zh: 與錢玄同先生論古史書
-title_en: Discussing ancient history with Mr. Qian Xuantong
+title_en: Discussing Ancient History with Mr. Qian Xuantong
 original: zh
 direction: zh-en
 order: 0

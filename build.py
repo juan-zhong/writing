@@ -184,6 +184,18 @@ def render_lyrics(w):
 GFONT = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400&amp;display=swap">'
 
 
+# back-to-top button, the same as on /me and /art (appears after scrolling down)
+TOTOP = """<a href="#" class="to-top" id="toTop" aria-label="Back to top" title="Back to top">↑</a>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true }); f();
+  b.addEventListener('click', function (e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>"""
+
+
 def page(path, lang, title, body, body_class, zh_body=False, remember=None, extra_head=""):
     depth_ = path.count("/")
     r = "../" * depth_
@@ -203,6 +215,7 @@ def page(path, lang, title, body, body_class, zh_body=False, remember=None, extr
 </head>
 <body class="{body_class}">
 {body.replace("{R}", r)}
+{TOTOP}
 </body>
 </html>
 """
@@ -274,8 +287,9 @@ def build_intro():
 </section>
 </div>
 <div class="intro-foot">
+<a class="zh" href="{ME}" lang="zh-CN">{kai("钟娟")}</a>
 <span class="fig">{YEARS_EN}</span>
-<a href="{ME}">JUAN ZHONG <span class="zh">{kai("钟娟")}</span></a>
+<a class="en-name" href="{ME}">JUAN ZHONG</a>
 </div>
 </main>"""
     page("index.html", "en", "A Collection of Writings 随笔 · Juan Zhong", body, "p-intro", zh_body=True)
@@ -301,7 +315,7 @@ def build_index_zh(by):
             if cat in ("poems", "translations"):
                 href = f"{cat}.html#{w['slug']}"
             else:
-                href = f"../works/{w['slug']}.html"
+                href = work_href(w)
             if draft:
                 items.append(f'<span class="s x">{t}{mk_h}</span>')
             else:
@@ -338,7 +352,7 @@ def build_index_en(by):
             if cat in ("poems", "translations"):
                 href = f"{cat}.html#{w['slug']}"
             else:
-                href = f"../works/{w['slug']}.html"
+                href = work_href(w)
             if draft:
                 subs.append(f'<span class="x">{t}{small_h}</span>')
             else:
@@ -407,6 +421,13 @@ def build_poems(by, lang):
     page(f"{lang}/poems.html", "zh-CN" if lang == "zh" else "en", title, body, f"p-cat p-{lang}", zh_body=True, remember=lang)
 
 
+def work_href(w):
+    """Link to a work from zh/ or en/: its own page, or its PDF if the work is kept as a PDF."""
+    if w.get("pdf"):
+        return w["pdf"] if w["pdf"].startswith("http") else "../" + w["pdf"]
+    return f"../works/{w['slug']}.html"
+
+
 def row(w, lang, href):
     big, big_lang, small, small_lang = main_title(w)
     draft = w.get("status") == "draft"
@@ -415,6 +436,8 @@ def row(w, lang, href):
     flag = ""
     if draft:
         flag = f'<span class="flag zh">{kai("待整理")}</span>' if lang == "zh" else '<span class="flag en">(to be edited)</span>'
+    if w.get("pdf") and w.get("category") == "essays":
+        flag += '<span class="flag en">PDF</span>'
     d = date_zh(w) if lang == "zh" else date_en(w)
     if w.get("updated") == "yes":
         d = f'{d} <span class="zh">{kai("更新")}</span>' if lang == "zh" else f"Updated {d}"
@@ -425,7 +448,7 @@ def row(w, lang, href):
 
 
 def build_essays(by, lang):
-    rows = [row(w, lang, f"../works/{w['slug']}.html") for w in by["essays"]]
+    rows = [row(w, lang, work_href(w)) for w in by["essays"]]
     note = '<p class="cat-note">All essays were written in Chinese.</p>' if lang == "en" else ""
     other = "../en/essays.html" if lang == "zh" else "../zh/essays.html"
     body = f"""{tabs(lang, other)}
@@ -440,7 +463,7 @@ def build_essays(by, lang):
 
 
 def build_notes(by, lang):
-    rows = [row(w, lang, f"../works/{w['slug']}.html") for w in by["notes"]]
+    rows = [row(w, lang, work_href(w)) for w in by["notes"]]
     sel_rows = []
     for zh, en in SELECTS:
         if lang == "zh":
@@ -529,7 +552,7 @@ def build_work(w, siblings):
     if w.get("content_note"):
         note = f'<p class="cnote"><span class="zh" lang="zh-CN">{kai(w["content_note"])}</span><span class="en" lang="en">Contains sensitive content, including suicide. Please read with care.</span></p>'
     i = siblings.index(w)
-    live = [s for s in siblings if s.get("status") != "draft"]
+    live = [s for s in siblings if s.get("status") != "draft" and not s.get("pdf")]
     j = live.index(w)
     prev_w = live[j - 1] if j > 0 else None
     next_w = live[j + 1] if j + 1 < len(live) else None
@@ -608,7 +631,7 @@ def main():
         build_notes(by, lang)
     for cat in ("essays", "notes"):
         for w in by[cat]:
-            if w.get("status") != "draft":
+            if w.get("status") != "draft" and not w.get("pdf"):
                 build_work(w, by[cat])
     subset_font()
     print("built")

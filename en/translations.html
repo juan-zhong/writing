@@ -21,14 +21,14 @@
 <main class="col">
 <section class="work tr" id="gu-jiegang-qian-xuantong">
 <h2 class="t-big zh" lang="zh-CN">與錢玄同先生論古史書</h2>
-<p class="t-small en" lang="en">Discussing ancient history with Mr. Qian Xuantong</p>
+<p class="t-small en" lang="en">Discussing Ancient History with Mr. Qian Xuantong</p>
 <p class="meta">GU JIEGANG, 1923 · ANNOTATED TRANSLATION BY JUAN ZHONG, 2020 · ZH → EN</p>
 <p class="course">Selected Readings in Early Chinese, Columbia University</p>
 <a class="btn" href="https://juan-zhong.github.io/me/Final%20Translation%20Project%20Juan%20Zhong.pdf">TRANSLATION (PDF)</a>
 </section>
 <section class="work tr" id="heart-to-be-wild">
 <h2 class="t-big zh" lang="zh-CN">心要野</h2>
-<p class="t-small en" lang="en">Heart to be wild</p>
+<p class="t-small en" lang="en">Heart to Be Wild</p>
 <p class="meta">QUEEN SEA BIG SHARK · TRANSLATED BY JUAN ZHONG · ZH → EN</p>
 <div class="btns"><a class="btn" href="../pdf/heart-to-be-wild.pdf">TRANSLATION (PDF)</a></div>
 
@@ -45,5 +45,14 @@
 <a href="https://juan-zhong.github.io/me/">JUAN ZHONG <span class="zh">钟娟</span></a>
 <a href="https://juan-zhong.github.io/art/">ART</a>
 </footer>
+<a href="#" class="to-top" id="toTop" aria-label="Back to top" title="Back to top">↑</a>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true }); f();
+  b.addEventListener('click', function (e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
 </body>
 </html>

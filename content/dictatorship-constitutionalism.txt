@@ -1,10 +1,10 @@
 ---
 slug: dictatorship-constitutionalism
 category: essays
-title_zh: 专政与宪政之辩
-title_en: Dictatorship versus constitutionalism
+title_zh: 专政与宪政之辨
+title_en: Dictatorship versus Constitutionalism
 original: zh
-written: 2018-2019
+written: 2019-02
 order: 1
-status: draft
+pdf: pdf/dictatorship-constitutionalism.pdf
 ---

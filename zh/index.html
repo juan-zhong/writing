@@ -23,13 +23,14 @@
 </div>
 <div class="g">
 <a class="m" href="essays.html">文集</a>
+<a class="s" href="../pdf/neo-nationalism.pdf">新国家主义</a>
+<a class="s" href="../pdf/dictatorship-constitutionalism.pdf">专政与宪政之辨</a>
 <a class="s" href="../works/zaji-2021.html">杂记<span class="mk">辛丑</span></a>
 <a class="s" href="../works/scar.html">伤疤</a>
 <a class="s" href="../works/zaji-2023.html">杂记<span class="mk">癸卯</span></a>
 <a class="s" href="../works/lost-in-egypt.html">迷失埃及</a>
 <a class="s" href="../works/ways-of-analyzing-a-life.html">生活的分析方法</a>
 <a class="s" href="../works/death.html">死亡</a>
-<span class="s x">专政与宪政之辩<span class="mk">待整理</span></span>
 </div>
 <div class="g">
 <a class="m" href="translations.html">翻译</a>
@@ -46,5 +47,14 @@
 <div class="foot"><p class="year">戊戌至丙午</p><p class="note">标英者原以英文写成</p><p class="name"><a href="https://juan-zhong.github.io/me/">钟娟</a></p></div>
 <a class="lang en" href="../en/index.html" lang="en">EN</a>
 </main>
+<a href="#" class="to-top" id="toTop" aria-label="Back to top" title="Back to top">↑</a>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true }); f();
+  b.addEventListener('click', function (e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
 </body>
 </html>

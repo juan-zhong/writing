@@ -1,0 +1,10 @@
+---
+slug: neo-nationalism
+category: essays
+title_zh: 新国家主义
+title_en: Neo-nationalism
+original: zh
+written: 2018-11
+order: 0
+pdf: pdf/neo-nationalism.pdf
+---
