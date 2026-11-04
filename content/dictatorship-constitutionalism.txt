@@ -5,6 +5,6 @@ title_zh: 专政与宪政之辨
 title_en: Dictatorship versus Constitutionalism
 original: zh
 written: 2019-02
-order: 1
+order: 0
 pdf: pdf/dictatorship-constitutionalism.pdf
 ---

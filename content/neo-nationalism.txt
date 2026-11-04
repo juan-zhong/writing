@@ -5,6 +5,6 @@ title_zh: 新国家主义
 title_en: Neo-statism
 original: zh
 written: 2018-11
-order: 0
+order: 1
 pdf: pdf/neo-nationalism.pdf
 ---
