@@ -1,8 +1,8 @@
 ---
 slug: gender-diversity
 category: notes
-title_zh: 多元性别
-title_en: Gender Diversity
+title_zh: 多元性别学习笔记
+title_en: Gender Diversity Learning Notes
 original: zh
 written: 2026-10
 updated: yes

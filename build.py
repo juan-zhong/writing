@@ -32,7 +32,6 @@ CATEGORIES = [  # order on the contents pages
     ("notes", "NOTES", "笔记", "Notes"),
 ]
 CAT = {c[0]: c for c in CATEGORIES}
-SELECTS = [("电影", "Film"), ("音乐", "Music"), ("酒吧", "Bars"), ("餐厅", "Restaurants"), ("气味", "Scents")]
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
 KAI_CHARS = set()
@@ -263,7 +262,7 @@ def build_intro():
         "我用中文和英文写作，偶尔也做翻译。目录可选择中文或英文，正文则按各篇作品的语言呈现。",
     ]
     en = [
-        "Over the years, I received academic training in various fields across the arts and sciences. My studies and everyday experiences inform my thinking and writing. This site collects some of my writings beyond academic papers, including poems, essays, notes, and translations.",
+        "Over the years, I received academic training in various fields across the humanities and social sciences. My studies and everyday experiences inform my thinking and writing. This site collects some of my writings beyond academic papers, including poems, essays, notes, and translations.",
         "I write in Chinese and English and occasionally translate. The table of contents can be viewed in Chinese or English, while each piece is presented in the language in which it was written or translated.",
     ]
     zh_p = "\n".join(f"<p>{esc(x)}</p>" for x in zh)
@@ -320,8 +319,6 @@ def build_index_zh(by):
                 items.append(f'<span class="s x">{t}{mk_h}</span>')
             else:
                 items.append(f'<a class="s" href="{href}">{t}{mk_h}</a>')
-        if cat == "notes":
-            items.append(f'<a class="s x" href="notes.html#selects">{kai("选录")}<span class="mk">{kai("待整理")}</span></a>')
         groups.append('<div class="g">\n' + "\n".join(items) + "\n</div>")
     body = f"""<main class="card vcard">
 <div class="title"><h1 class="v"><a href="../index.html">{kai("随笔")}</a></h1></div>
@@ -357,8 +354,6 @@ def build_index_en(by):
                 subs.append(f'<span class="x">{t}{small_h}</span>')
             else:
                 subs.append(f'<a href="{href}">{t}{small_h}</a>')
-        if cat == "notes":
-            subs.append('<a class="x" href="notes.html#selects">Selects<small>(to be edited)</small></a>')
         groups.append(f'<div><a class="main" href="{cat}.html">{en}</a>\n<div class="subs">{"".join(subs)}</div></div>')
     name = "".join(f"<span>{c}</span>" for c in "JUAN") + '<span class="gap"></span>' + "".join(f"<span>{c}</span>" for c in "ZHONG")
     body = f"""<main class="card pcard">
@@ -464,16 +459,6 @@ def build_essays(by, lang):
 
 def build_notes(by, lang):
     rows = [row(w, lang, work_href(w)) for w in by["notes"]]
-    sel_rows = []
-    for zh, en in SELECTS:
-        if lang == "zh":
-            sel_rows.append(f'<div class="row x"><span class="t zh">{kai(zh)}</span><span class="d en">{en.upper()}</span></div>')
-        else:
-            sel_rows.append(f'<div class="row x"><span class="t en">{en}</span><span class="d zh">{kai(zh)}</span></div>')
-    if lang == "zh":
-        sel_head = f'<h2 class="en">SELECTS</h2><span class="zh">{kai("选录")}</span><span class="zh flag">{kai("待整理")}</span>'
-    else:
-        sel_head = '<h2 class="en">SELECTS</h2><span class="zh">' + kai("选录") + '</span><span class="en flag">(to be edited)</span>'
     note = '<p class="cat-note">Written in Chinese.</p>' if lang == "en" else ""
     other = "../en/notes.html" if lang == "zh" else "../zh/notes.html"
     body = f"""{tabs(lang, other)}
@@ -481,10 +466,6 @@ def build_notes(by, lang):
 <main class="col list">
 {chr(10).join(rows)}
 {note}
-<section class="selects" id="selects">
-<div class="sel-head">{sel_head}</div>
-{chr(10).join(sel_rows)}
-</section>
 </main>
 {footer(lang)}"""
     title = "笔记 · 随笔 · 钟娟" if lang == "zh" else "Notes · Writings · Juan Zhong"

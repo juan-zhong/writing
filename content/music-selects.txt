@@ -1,0 +1,9 @@
+---
+slug: music-selects
+category: notes
+title_zh: 歌单
+title_en: Music Selects
+original: zh
+order: 3
+status: draft
+---
