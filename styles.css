@@ -1,6 +1,8 @@
 /* Writings · juan-zhong.github.io — shares its type and colours with /me and /art.
    Optima for Latin text, Kaiti (楷体) for Chinese titles and navigation,
-   Songti (宋体) for Chinese body text. Self-hosted fonts are OFL (see fonts/). */
+   Songti (宋体) for Chinese body text. Self-hosted fonts are OFL (see fonts/).
+   © 2026 Juan Zhong. All rights reserved. The site design (colours, layout,
+   typography and font pairing) and code are not licensed for reuse. */
 
 @font-face { font-family: 'Writing Kai'; src: url('fonts/lxgw-wenkai-writings.woff2') format('woff2'); font-display: swap; }
 @font-face { font-family: 'Optima Fallback'; src: url('fonts/marcellus-latin-400-normal.woff2') format('woff2'); font-display: swap; }
