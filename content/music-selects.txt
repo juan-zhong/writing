@@ -3,6 +3,7 @@ slug: music-selects
 category: notes
 title_zh: 歌单
 title_en: Music Selects
+page_title_en: Juan's Music Selects
 original: zh
 order: 3
 form: selects
@@ -10,43 +11,43 @@ form: selects
 Juan's music selects
 
 instrumental
-Haitian Fight Song | Charles Mingus | 1957
-take five | Dave Brubeck | 1959
-Le Fabuleux destin d'Amélie Poulain (Bande originale du film) | Yann Tiersen | 2001
-El Tango de los Assassinos | John Powell | 2005
-Finale (Tango Apasionado) [2009 Remaster] | Astor Piazzolla |
+Haitian Fight Song | Charles Mingus | 1957 | spotify=https://open.spotify.com/track/7iRXxr5SlW13UYlVg2V6Zt | apple=https://music.apple.com/us/album/haitian-fight-song/189229246?i=189229895
+Take Five | Dave Brubeck | 1959 | spotify=https://open.spotify.com/track/1YQWosTIljIvxAgHWTp7KP | apple=https://music.apple.com/us/album/take-five/157427923?i=157427932
+Le Fabuleux destin d'Amélie Poulain (Bande originale du film) | Yann Tiersen | 2001 | spotify=https://open.spotify.com/album/6PRPYATK5VvjZ2p911y6U0 | apple=https://music.apple.com/us/album/le-fabuleux-destin-dam%C3%A9lie-poulain-bande-originale-du-film/1575400412
+El Tango de los Assassinos | John Powell | 2005 | spotify=https://open.spotify.com/track/402qqyHjcEFFEyB08Uhb5x | apple=https://music.apple.com/us/album/el-tango-de-los-assassinos/75870790?i=75870569
+Finale (Tango Apasionado) [2009 Remaster] | Astor Piazzolla | | spotify=https://open.spotify.com/track/0MRDRET4b0g922jnhfY4aF | apple=https://music.apple.com/us/album/finale-tango-apasionado/80001358?i=80001324
 
 内容与形式高度统一
-little boxes | Malvina Reynolds | 1962
-Tom's Diner (7" A) | Suzanne Vega & DNA | 1987
-无地自容 | 黑豹乐队 | 1991
-Crystalised | the xx | 2009
-Walk With Me, Lord (SOUND SPIRIT) | The Baylor Project | 2024
-Spooky | Anika | 2025
+Little Boxes | Malvina Reynolds | 1962 | spotify=https://open.spotify.com/track/0dRvjBVCStIlBxOqbhAQ3q | apple=https://music.apple.com/us/album/little-boxes/193319132?i=193320192
+Tom's Diner (7" A) | Suzanne Vega & DNA | 1987 | spotify=https://open.spotify.com/track/4QtScYyh6Yxio27udYPhh0 | apple=https://music.apple.com/us/album/toms-diner-7-a/1443836067?i=1443836345
+无地自容 | 黑豹乐队 | 1991 | spotify=https://open.spotify.com/track/69MXQK9Auz2B9QAhjoMMpY | apple=https://music.apple.com/us/album/%E7%84%A1%E5%9C%B0%E8%87%AA%E5%AE%B9/1071760957?i=1071761079
+Crystalised | The xx | 2009 | spotify=https://open.spotify.com/track/5UBBJnFxsfjFxfrtvErQoH | apple=https://music.apple.com/us/album/crystalised/1849107580?i=1849107795
+Walk With Me, Lord (SOUND SPIRIT) | The Baylor Project | 2024 | spotify=https://open.spotify.com/track/4ROo9bEFktdK5GDTNuYMqy | apple=https://music.apple.com/us/album/walk-with-me-lord-sound-spirit/1749097508?i=1749097510
+Spooky | Anika | 2025 | spotify=https://open.spotify.com/track/3YkxaxlYntwm5uEPXo4osA | apple=https://music.apple.com/us/album/spooky/1839520061?i=1839520066
 
 激烈
-Born this way | lady gaga | 2011
-心要野 | 后海大鲨鱼 | 2015 | page=../zh/translations.html#heart-to-be-wild
-丑奴儿 | 草东没有派对 | 2016
-if i could make it go quiet | girl in red | 2021
-Serotonin Dreams | BoyWithUke | 2022
+Born This Way | Lady Gaga | 2011 | spotify=https://open.spotify.com/track/6r2BECwMgEoRb5yLfp0Hca | apple=https://music.apple.com/us/album/born-this-way/1440857161?i=1440857424
+心要野 | 后海大鲨鱼 | 2015 | page=../zh/translations.html#heart-to-be-wild | spotify=https://open.spotify.com/track/4ih7aRL1ZDRWBY3hpCMGG8 | apple=https://music.apple.com/us/album/%E5%BF%83%E8%A6%81%E9%87%8E/1808445272?i=1808445275
+丑奴儿 | 草东没有派对 | 2016 | spotify=https://open.spotify.com/album/2Qfn3LNC6qhxgpyPjBQFJh | apple=https://music.apple.com/us/album/%E9%86%9C%E5%A5%B4%E5%85%92/1676735354
+if i could make it go quiet | girl in red | 2021 | spotify=https://open.spotify.com/album/69p42ovQdwmYPLUsAQpeNn | apple=https://music.apple.com/us/album/if-i-could-make-it-go-quiet/1547248211
+Serotonin Dreams | BoyWithUke | 2022 | spotify=https://open.spotify.com/album/1I79ZTFJ5FVLwMYRWvhk73 | apple=https://music.apple.com/us/album/serotonin-dreams/1614745679
 
 细腻
-songs of love and hate | Leonard Cohen | 1971
-0 | Damien Rice | 2002
-冀西南林路行 | 万能青年旅店 | 2020
-a bedroom of one's own | ？te | 2020 | q=a bedroom of one's own
-LÜCY | LÜCY | 2022
+Songs of Love and Hate | Leonard Cohen | 1971 | spotify=https://open.spotify.com/album/5WGGkUyTDomzIAdj9Vz6v9 | apple=https://music.apple.com/us/album/songs-of-love-and-hate/1827107326
+O | Damien Rice | 2002 | spotify=https://open.spotify.com/album/6aHBpqM0YAMfYxfTBjfmk1 | apple=https://music.apple.com/us/album/o/2249511
+冀西南林路行 | 万能青年旅店 | 2020 | spotify=https://open.spotify.com/album/6ValxpcsrkQP2ugCU2Kxwy | apple=https://music.apple.com/us/album/%E5%86%80%E8%A5%BF%E5%8D%97%E6%9E%97%E8%B7%AF%E8%A1%8C/1545534900
+A Bedroom of One's Own | Whyte | 2020 | spotify=https://open.spotify.com/album/3P383bkqjqYIlaxU8491Yw | apple=https://music.apple.com/us/album/a-bedroom-of-ones-own/1872300444
+LÜCY | LÜCY | 2022 | spotify=https://open.spotify.com/album/5GLdc5aIjdvyO0U1U9sJKX | apple=https://music.apple.com/us/album/l%C3%BCcy/1628728683
 
 反差
-dontbeangry | Cacien | 2019
-anxiety | doechii | 2025
+Dontbeangry | Cacien | 2019 | spotify=https://open.spotify.com/track/6bOdO3cOU6LWi2biLM2wP5 | apple=https://music.apple.com/us/album/dontbeangry/1493307151?i=1493307152
+Anxiety | Doechii | 2025 | spotify=https://open.spotify.com/track/1musbempyJAw5gfSKZHXP9 | apple=https://music.apple.com/us/album/anxiety/1800052072?i=1800052074
 
 by languages i like
-hakka 连平客语 | 夜游神 | 九连真人 |
-hakka 连平客语 | 落水天 | 九连真人 |
-Southern Min 海丰闽南语粤语 | 县城记 | 五条人 |
-Estonian | Kättemaks | Curly Strings | 2014
-SaySiyat 台湾赛夏语 | isahini | Lücy |
-čeština 布拉格捷克语 | toxia | The Plastic People of the Universe |
-jamican | Bam Bam | sister nancy |
+Lianping Hakka 连平客语 | 夜游神 | 九连真人 | spotify=none | apple=none
+Lianping Hakka 连平客语 | 落水天 (Live) | 九连真人 | spotify=https://open.spotify.com/track/1UaAiri3H73HtwNKAzyJnw | apple=https://music.apple.com/us/album/%E8%90%BD%E6%B0%B4%E5%A4%A9-live/1852296713?i=1852296718
+Haifeng Southern Min 海丰闽南语 | 县城记 | 五条人 | spotify=https://open.spotify.com/album/74TzbVpqPZFraU4syTaHuv | apple=https://music.apple.com/us/album/%E5%8E%BF%E5%9F%8E%E8%AE%B0/1564626976
+Estonian 爱沙尼亚语 | Kättemaks | Curly Strings | spotify=https://open.spotify.com/track/4Domp7t6eGnSgjFKgsvn0E | apple=https://music.apple.com/us/album/k%C3%A4ttemaks/888454034?i=888454080
+SaySiyat 台湾赛夏语 | isahini | LÜCY | spotify=https://open.spotify.com/track/2nR1eFINMv4a2oQ5JWDh6D | apple=https://music.apple.com/us/album/isahini/1628728683?i=1628728907
+čeština 捷克语 | Toxika | The Plastic People of the Universe | spotify=https://open.spotify.com/track/5zRtLOh2P6RgOUd4mt7Gzx | apple=https://music.apple.com/us/album/toxika/1598613337?i=1598613993
+Jamaican Patois | Bam Bam | Sister Nancy | spotify=https://open.spotify.com/track/1p2ea5Dy0tOnt9q4wfy4aX | apple=https://music.apple.com/us/album/bam-bam/309416842?i=309416854

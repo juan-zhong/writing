@@ -105,6 +105,8 @@ def main_title(w):
 
 def title_html(w, tag, cls=""):
     big, big_lang, small, small_lang = main_title(w)
+    if small_lang == "en" and w.get("page_title_en"):  # a longer subtitle on the work page itself
+        small = w["page_title_en"]
     big_h = f'<{tag} class="t-big {big_lang}{cls}" lang="{"zh-CN" if big_lang == "zh" else "en"}">{kai(big) if big_lang == "zh" else esc(big)}</{tag}>'
     small_h = f'<p class="t-small {small_lang}" lang="{"zh-CN" if small_lang == "zh" else "en"}">{kai(small) if small_lang == "zh" else esc(small)}</p>'
     return big_h + "\n" + small_h
@@ -152,6 +154,8 @@ def select_section(lines):
         cells = [c for c in cells if not re.match(r"^(page|q|spotify|apple)=", c)]
         lang = cells.pop(0) if by_lang else ""
         title, artist, year = (cells + ["", "", ""])[:3]
+        if by_lang:
+            year = ""  # no years in the languages section
         q = extra.get("q") or f"{title} {artist}"
         sp = extra.get("spotify") or "https://open.spotify.com/search/" + urllib.parse.quote(q)
         am = extra.get("apple") or "https://music.apple.com/us/search?term=" + urllib.parse.quote(q)
@@ -159,7 +163,8 @@ def select_section(lines):
         if extra.get("page"):
             t = f'<a class="sel-page" href="{attr(extra["page"])}">{t}</a>'
         lang_h = f'<span class="sel-lang">{esc(lang)}</span>' if lang else ""
-        out.append(f"""<li>{lang_h}<span class="sel-main"><span class="sel-t">{t}</span> <span class="sel-a">{esc(artist)}</span></span><span class="sel-l"><a href="{attr(sp)}" target="_blank" rel="noopener" aria-label="Spotify: {attr(title)}">Spotify</a><a href="{attr(am)}" target="_blank" rel="noopener" aria-label="Apple Music: {attr(title)}">Apple</a></span><span class="sel-y">{esc(year)}</span></li>""")
+        links = "".join(f'<a href="{attr(u)}" target="_blank" rel="noopener" aria-label="{n}: {attr(title)}">{s}</a>' for u, n, s in ((sp, "Spotify", "Spotify"), (am, "Apple Music", "Apple")) if u != "none")
+        out.append(f"""<li>{lang_h}<span class="sel-main"><span class="sel-t">{t}</span> <span class="sel-a">{esc(artist)}</span></span><span class="sel-l">{links}</span><span class="sel-y">{esc(year)}</span></li>""")
     cls = "sel-list by-lang" if by_lang else "sel-list"
     return f'<section class="sel"><h2 class="sel-h">{esc(head)}</h2><ul class="{cls}">' + "".join(out) + "</ul></section>"
 
@@ -267,7 +272,7 @@ def tabs(lang, other_href=None):
 
 def footer(lang):
     zh_me = f' <span class="zh">{kai("钟娟")}</span>'
-    zh_art = f' <span class="zh">{kai("摄影")}</span>' if lang == "zh" else ""
+    zh_art = f' <span class="zh">{kai("艺术")}</span>'
     return f"""<footer class="site-foot">
 <a href="{ME}">JUAN ZHONG{zh_me}</a>
 <a href="{ART}">ART{zh_art}</a>
