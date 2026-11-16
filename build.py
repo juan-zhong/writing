@@ -16,6 +16,7 @@ characters used in titles and navigation.
 import html
 import os
 import re
+import urllib.parse
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 CONTENT = os.path.join(ROOT, "content")
@@ -141,6 +142,28 @@ def depth(line):
     return len(m.group(1).split("."))
 
 
+def select_section(lines):
+    head, rows = lines[0], lines[1:]
+    by_lang = head.startswith("by languages")
+    out = []
+    for r in rows:
+        cells = [c.strip() for c in r.split("|")]
+        extra = {k: v for k, v in (c.split("=", 1) for c in cells if re.match(r"^(page|q|spotify|apple)=", c))}
+        cells = [c for c in cells if not re.match(r"^(page|q|spotify|apple)=", c)]
+        lang = cells.pop(0) if by_lang else ""
+        title, artist, year = (cells + ["", "", ""])[:3]
+        q = extra.get("q") or f"{title} {artist}"
+        sp = extra.get("spotify") or "https://open.spotify.com/search/" + urllib.parse.quote(q)
+        am = extra.get("apple") or "https://music.apple.com/us/search?term=" + urllib.parse.quote(q)
+        t = esc(title)
+        if extra.get("page"):
+            t = f'<a class="sel-page" href="{attr(extra["page"])}">{t}</a>'
+        lang_h = f'<span class="sel-lang">{esc(lang)}</span>' if lang else ""
+        out.append(f"""<li>{lang_h}<span class="sel-main"><span class="sel-t">{t}</span> <span class="sel-a">{esc(artist)}</span></span><span class="sel-l"><a href="{attr(sp)}" target="_blank" rel="noopener" aria-label="Spotify: {attr(title)}">Spotify</a><a href="{attr(am)}" target="_blank" rel="noopener" aria-label="Apple Music: {attr(title)}">Apple</a></span><span class="sel-y">{esc(year)}</span></li>""")
+    cls = "sel-list by-lang" if by_lang else "sel-list"
+    return f'<section class="sel"><h2 class="sel-h">{esc(head)}</h2><ul class="{cls}">' + "".join(out) + "</ul></section>"
+
+
 def render_body(w):
     form = w.get("form", "lines")
     lang = "zh-CN" if w["original"] == "zh" else "en"
@@ -152,6 +175,11 @@ def render_body(w):
             continue
         if form == "prose":
             parts.append("<p>" + "<br>".join(esc(l) for l in lines) + "</p>")
+        elif form == "selects":  # first line of a block = heading; rows: [language |] title | artist | year [| page=… | q=…]
+            if len(lines) == 1:
+                parts.append(f'<p class="sel-intro">{esc(lines[0])}</p>')
+            else:
+                parts.append(select_section(lines))
         elif form == "outline":
             spans = []
             for l in lines:
@@ -195,7 +223,7 @@ TOTOP = """<a href="#" class="to-top" id="toTop" aria-label="Back to top" title=
 </script>"""
 
 
-def page(path, lang, title, body, body_class, zh_body=False, remember=None, extra_head=""):
+def page(path, lang, title, body, body_class, zh_body=False, remember=None, extra_head="", robots=""):
     depth_ = path.count("/")
     r = "../" * depth_
     remember_js = ""
@@ -206,7 +234,7 @@ def page(path, lang, title, body, body_class, zh_body=False, remember=None, extr
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{esc(title)}</title>
+{robots}<title>{esc(title)}</title>
 <meta name="description" content="Writings by Juan Zhong 钟娟: poems, essays, translations and notes.">
 <link rel="stylesheet" href="{r}styles.css">
 {GFONT if zh_body else ""}{extra_head}
@@ -258,12 +286,12 @@ def cat_header(cat):
 
 def build_intro():
     zh = [
-        "求学期间，我接受过不同的人文社科领域的学术训练。这些学习经历和我的日常生活经验，是我思考和写作的来源。这里选录了我在学术论文之外的习作，包括诗歌、散文、杂记、笔记和翻译。",
-        "我用中文和英文写作，偶尔也做翻译。目录可选择中文或英文，正文则按各篇作品的语言呈现。",
+        '求学期间，我有幸接受了人文社科领域内不同学科的学术训练。这些学习经历和我的日常生活经验让我一直保持着思考和写作的习惯。因此我在学术论文之外也创作了一些诗歌、散文、杂记和翻译，整理成册后便有了这部选集。',
+        '我写作时多用中文，有时用英文，偶尔做一些翻译。整理选集的过程中，我为各篇作品确定了中英双语标题，可以通过下方的中文或英文目录查看，各篇正文内容则保留了当时的写作语言。',
     ]
     en = [
-        "Over the years, I received academic training in various fields across the humanities and social sciences. My studies and everyday experiences inform my thinking and writing. This site collects some of my writings beyond academic papers, including poems, essays, notes, and translations.",
-        "I write in Chinese and English and occasionally translate. The table of contents can be viewed in Chinese or English, while each piece is presented in the language in which it was written or translated.",
+        'Over the course of my studies, I was lucky to receive academic training in various fields across the humanities and social sciences. This training, together with my life experiences, has helped me keep thinking and writing. Beyond my academic works, I have therefore also written poems, essays, miscellanies, and translations, which I have gathered here as a collection of writings.',
+        'I write mostly in Chinese, sometimes in English, and occasionally translate. In editing this collection, I gave each piece a title in both Chinese and English, so the contents below can be browsed in either language; each piece of work remains in the language in which it was written.',
     ]
     zh_p = "\n".join(f"<p>{esc(x)}</p>" for x in zh)
     en_p = "\n".join(f"<p>{esc(x)}</p>" for x in en)
@@ -287,7 +315,7 @@ def build_intro():
 </div>
 <div class="intro-foot">
 <a class="zh" href="{ME}" lang="zh-CN">{kai("钟娟")}</a>
-<span class="fig">{YEARS_EN}</span>
+<span class="fig">© {YEARS_EN}</span>
 <a class="en-name" href="{ME}">JUAN ZHONG</a>
 </div>
 </main>"""
@@ -297,7 +325,8 @@ def build_intro():
 def build_index_zh(by):
     groups = []
     for cat, _, zh, _ in CATEGORIES:
-        items = [f'<a class="m" href="{cat}.html">{kai(zh)}</a>']
+        label = "杂记" if cat == "notes" else zh  # her own choice for the Chinese contents page
+        items = [f'<a class="m" href="{cat}.html">{kai(label)}</a>']
         for w in by[cat]:
             t = kai(w["title_zh"])
             mk = ""
@@ -326,7 +355,7 @@ def build_index_zh(by):
 <nav class="toc" aria-label="目录">
 {chr(10).join(groups)}
 </nav>
-<div class="foot"><p class="year">{kai(YEARS_ZH)}</p><p class="note">{kai("标英者原以英文写成")}</p><p class="name"><a href="{ME}">{kai("钟娟")}</a></p></div>
+<div class="foot"><p class="year">{kai(YEARS_ZH)}</p><p class="name"><a href="{ME}">{kai("钟娟")}</a></p></div>
 <a class="lang en" href="../en/index.html" lang="en">EN</a>
 </main>"""
     page("zh/index.html", "zh-CN", "随笔 · 钟娟", body, "p-index-zh", remember="zh")
@@ -548,11 +577,13 @@ def build_work(w, siblings):
             t += f' <span class="pn-mark">{date_zh(x).split(" ")[0]}</span>'
         return f'<a href="{x["slug"]}.html">{"← " + t if arrow_left else t + " →"}</a>'
 
+    meta = [m for m in meta if m]
+    meta_html = f'<p class="meta">{" · ".join(meta)}</p>' if meta else ""
     body = f"""{nav_zh}
 {nav_en}
 <header class="work-head">
 {title_html(w, "h1")}
-<p class="meta">{" · ".join(meta)}</p>
+{meta_html}
 {note}
 </header>
 <main class="col article">
@@ -570,7 +601,8 @@ def build_work(w, siblings):
 }})();
 </script>"""
     big, _, _, _ = main_title(w)
-    page(f"works/{w['slug']}.html", "zh-CN" if orig == "zh" else "en", f"{big} · {zh_cat} · 随笔 · 钟娟", body, f"p-work form-{w.get('form', 'lines')}", zh_body=True)
+    robots = '<meta name="robots" content="noindex">\n' if w.get("noindex") == "yes" else ""
+    page(f"works/{w['slug']}.html", "zh-CN" if orig == "zh" else "en", f"{big} · {zh_cat} · 随笔 · 钟娟", body, f"p-work form-{w.get('form', 'lines')}", zh_body=True, robots=robots)
 
 
 def subset_font():

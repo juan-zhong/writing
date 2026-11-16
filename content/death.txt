@@ -8,6 +8,7 @@ written: 2025-04
 order: 7
 form: lines
 content_note: 含自杀等敏感内容 谨慎阅读
+noindex: yes
 ---
 在我抑郁最严重的时候
 我有过四次suicidal attempts

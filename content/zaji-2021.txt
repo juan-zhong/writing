@@ -2,7 +2,7 @@
 slug: zaji-2021
 category: essays
 title_zh: 杂记
-title_en: Miscellany I
+title_en: Miscellany 2021
 original: zh
 written: 2021-12
 order: 2

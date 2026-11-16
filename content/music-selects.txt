@@ -5,5 +5,48 @@ title_zh: 歌单
 title_en: Music Selects
 original: zh
 order: 3
-status: draft
+form: selects
 ---
+Juan's music selects
+
+instrumental
+Haitian Fight Song | Charles Mingus | 1957
+take five | Dave Brubeck | 1959
+Le Fabuleux destin d'Amélie Poulain (Bande originale du film) | Yann Tiersen | 2001
+El Tango de los Assassinos | John Powell | 2005
+Finale (Tango Apasionado) [2009 Remaster] | Astor Piazzolla |
+
+内容与形式高度统一
+little boxes | Malvina Reynolds | 1962
+Tom's Diner (7" A) | Suzanne Vega & DNA | 1987
+无地自容 | 黑豹乐队 | 1991
+Crystalised | the xx | 2009
+Walk With Me, Lord (SOUND SPIRIT) | The Baylor Project | 2024
+Spooky | Anika | 2025
+
+激烈
+Born this way | lady gaga | 2011
+心要野 | 后海大鲨鱼 | 2015 | page=../zh/translations.html#heart-to-be-wild
+丑奴儿 | 草东没有派对 | 2016
+if i could make it go quiet | girl in red | 2021
+Serotonin Dreams | BoyWithUke | 2022
+
+细腻
+songs of love and hate | Leonard Cohen | 1971
+0 | Damien Rice | 2002
+冀西南林路行 | 万能青年旅店 | 2020
+a bedroom of one's own | ？te | 2020 | q=a bedroom of one's own
+LÜCY | LÜCY | 2022
+
+反差
+dontbeangry | Cacien | 2019
+anxiety | doechii | 2025
+
+by languages i like
+hakka 连平客语 | 夜游神 | 九连真人 |
+hakka 连平客语 | 落水天 | 九连真人 |
+Southern Min 海丰闽南语粤语 | 县城记 | 五条人 |
+Estonian | Kättemaks | Curly Strings | 2014
+SaySiyat 台湾赛夏语 | isahini | Lücy |
+čeština 布拉格捷克语 | toxia | The Plastic People of the Universe |
+jamican | Bam Bam | sister nancy |

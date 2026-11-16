@@ -2,7 +2,7 @@
 slug: zaji-2023
 category: essays
 title_zh: 杂记
-title_en: Miscellany II
+title_en: Miscellany 2023
 original: zh
 written: 2023-12
 order: 4
