@@ -150,8 +150,8 @@ def select_section(lines):
     out = []
     for r in rows:
         cells = [c.strip() for c in r.split("|")]
-        extra = {k: v for k, v in (c.split("=", 1) for c in cells if re.match(r"^(page|q|spotify|apple)=", c))}
-        cells = [c for c in cells if not re.match(r"^(page|q|spotify|apple)=", c)]
+        extra = {k: v for k, v in (c.split("=", 1) for c in cells if re.match(r"^(page|q|spotify|apple|album|youtube)=", c))}
+        cells = [c for c in cells if not re.match(r"^(page|q|spotify|apple|album|youtube)=", c)]
         lang = cells.pop(0) if by_lang else ""
         title, artist, year = (cells + ["", "", ""])[:3]
         if by_lang:
@@ -162,9 +162,10 @@ def select_section(lines):
         t = esc(title)
         if extra.get("page"):
             t = f'<a class="sel-page" href="{attr(extra["page"])}">{t}</a>'
+        album_h = '<span class="sel-k">album</span>' if extra.get("album") == "yes" else ""
         lang_h = f'<span class="sel-lang">{esc(lang)}</span>' if lang else ""
-        links = "".join(f'<a href="{attr(u)}" target="_blank" rel="noopener" aria-label="{n}: {attr(title)}">{s}</a>' for u, n, s in ((sp, "Spotify", "Spotify"), (am, "Apple Music", "Apple")) if u != "none")
-        out.append(f"""<li>{lang_h}<span class="sel-main"><span class="sel-t">{t}</span> <span class="sel-a">{esc(artist)}</span></span><span class="sel-l">{links}</span><span class="sel-y">{esc(year)}</span></li>""")
+        links = "".join(f'<a href="{attr(u)}" target="_blank" rel="noopener" aria-label="{n}: {attr(title)}">{s}</a>' for u, n, s in ((sp, "Spotify", "Spotify"), (am, "Apple Music", "Apple"), (extra.get("youtube", "none"), "YouTube", "YouTube")) if u != "none")
+        out.append(f"""<li>{lang_h}<span class="sel-main"><span class="sel-t">{t}</span> <span class="sel-a">{esc(artist)}</span>{album_h}</span><span class="sel-l">{links}</span><span class="sel-y">{esc(year)}</span></li>""")
     cls = "sel-list by-lang" if by_lang else "sel-list"
     return f'<section class="sel"><h2 class="sel-h">{esc(head)}</h2><ul class="{cls}">' + "".join(out) + "</ul></section>"
 
